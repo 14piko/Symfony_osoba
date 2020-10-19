@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Osoba{% endblock %}
+
+{% block body %}
+    <h1>Osoba</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Šifra</th>
+                <td>{{ osoba.id }}</td>
+            </tr>
+            <tr>
+                <th>Ime</th>
+                <td>{{ osoba.Ime }}</td>
+            </tr>
+            <tr>
+                <th>Prezime</th>
+                <td>{{ osoba.Prezime }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('osoba_index') }}">Natrag na listu</a>
+
+    <a href="{{ path('osoba_edit', {'id': osoba.id}) }}">Uredi</a>
+
+    {{ include('osoba/_delete_form.html.twig') }}
+{% endblock %}

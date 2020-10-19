@@ -1,0 +1,39 @@
+
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Osoba index{% endblock %}
+
+{% block body %}
+    <h1>Osobe</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Šifra</th>
+                <th>Ime</th>
+                <th>Prezime</th>
+                <th>Radnja</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for osoba in osobas %}
+            <tr>
+                <td>{{ osoba.id }}</td>
+                <td>{{ osoba.Ime }}</td>
+                <td>{{ osoba.Prezime }}</td>
+                <td>
+                    <a href="{{ path('osoba_show', {'id': osoba.id}) }}"><i class="fa fa-eye"></i></a>
+                    <a href="{{ path('osoba_edit', {'id': osoba.id}) }}"><i class="fas fa-edit"></i></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">Nema rezultata</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('osoba_new') }}"><i class="fas fa-plus"></i>Nova osoba</a>
+{% endblock %}
